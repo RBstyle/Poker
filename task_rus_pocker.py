@@ -50,7 +50,7 @@ class Card(object):
             rank = 'King'
         elif self.rank == 14:
             rank = 'Ace'
-        return '%r of %r' % (rank, self.suit)
+        return '%r of11 %r' % (rank, self.suit)
 
 from random import randint
 class Deck(object):
@@ -67,7 +67,7 @@ class Deck(object):
         card = self.deck.pop(card_no - 1)
         self.cards_count -= 1
         rank = card % 13 + 2
-        suit = (card - 1) / 13 + 1
+        suit = int((card - 1) / 13 + 1) #поправил вывод целого
         if suit == 1:
             suit = Suit.SPADES
         elif suit == 2:
@@ -77,7 +77,7 @@ class Deck(object):
         elif suit == 4:
             suit = Suit.CLUBS
         else:
-            print 'Suit is not as expected'
+            print ('Suit is not as expected')
         return Card(rank, suit)
 
 class CombType(object):
